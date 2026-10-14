@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neostriata Phone | Buy phones. Repair phones.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#top">Neostriata<span> Phone</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#shop" class="hide-sm">Shop</a>
+      <a href="#repair">Repairs</a>
+      <button class="cart-btn" id="openCart" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <h1>New phones delivered. Broken phones fixed.</h1>
+    <p>Order the latest iPhone, Samsung, Redmi, Tecno and Huawei phones online and get them at your door. Phone spoiled? Report it and our engineer will tell you how long the repair takes.</p>
+    <div class="hero-actions">
+      <a class="btn btn-tag" href="#shop">Shop phones</a>
+      <a class="btn btn-line" href="#repair">Report a faulty phone</a>
+    </div>
+    <div class="trust">
+      <span>Delivery to your address</span><span>Pay on delivery or bank transfer</span><span>Repairs by a trained engineer</span>
+    </div>
+  </div>
+</div>
+
+<section id="shop">
+  <div class="wrap">
+    <h2>Phones for sale</h2>
+    <p class="sub">Tap a phone to see what it does, its full specs and what customers say.</p>
+    <div class="controls">
+      <div class="chips" id="chips" role="group" aria-label="Filter by brand"></div>
+      <input class="search" id="search" type="search" placeholder="Search a phone, e.g. Camon" aria-label="Search phones">
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="repair" id="repair">
+  <div class="wrap">
+    <h2>Phone spoiled? Report it here</h2>
+    <p class="sub">Tell us what is wrong. You will see the estimated repair time and the engineer's number straight away.</p>
+    <div class="repair-grid">
+      <div>
+        <form id="repairForm" novalidate>
+          <div class="row two">
+            <div><label for="rName">Your name</label><input id="rName" autocomplete="name"><div class="err" data-for="rName"></div></div>
+            <div><label for="rPhone">Your phone number</label><input id="rPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0803 000 0000"><div class="err" data-for="rPhone"></div></div>
+          </div>
+          <div class="row two">
+            <div><label for="rBrand">Phone brand</label>
+              <select id="rBrand"><option value="">Choose brand</option><option>iPhone</option><option>Samsung</option><option>Redmi / Xiaomi</option><option>Tecno</option><option>Infinix</option><option>Huawei</option><option>Other</option></select>
+              <div class="err" data-for="rBrand"></div></div>
+            <div><label for="rModel">Phone model</label><input id="rModel" placeholder="e.g. Galaxy A54"><div class="err" data-for="rModel"></div></div>
+          </div>
+          <div class="row">
+            <div><label for="rIssue">What is the problem?</label>
+              <select id="rIssue"></select>
+              <div class="err" data-for="rIssue"></div></div>
+          </div>
+          <div class="row">
+            <div><label for="rDesc">Tell us more (optional)</label><textarea id="rDesc" placeholder="When did it start? Did it fall or touch water?"></textarea></div>
+          </div>
+          <div class="row">
+            <div><label for="rMode">How will you bring the phone?</label>
+              <select id="rMode"><option>I will bring it to the shop</option><option>Come and pick it up from me</option></select></div>
+          </div>
+          <button class="btn btn-alert" type="submit">Report my phone</button>
+        </form>
+        <div class="result" id="repairResult" role="status" aria-live="polite"></div>
+      </div>
+
+      <aside>
+        <div class="eta-box">
+          <h3 style="font-family:var(--head)">How long does a repair take?</h3>
+          <table id="etaTable"></table>
+          <p class="note" style="margin-top:10px">These are estimates. The engineer confirms the exact time after checking your phone. Parts that are not in stock can add a few days.</p>
+        </div>
+        <div class="engineer">
+          <div>Repair engineer</div>
+          <span class="num">+234 907 694 3452</span>
+          <div class="btns">
+            <a class="btn btn-tag" href="tel:+2349076943452">Call engineer</a>
+            <a class="btn btn-line" href="https://wa.me/2349076943452" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What customers say</h2>
+    <p class="sub">Replace these with your real customer reviews.</p>
+    <div class="reviews" id="topReviews"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Neostriata Phone</strong> sells and repairs phones. Repair line: <a href="tel:+2349076943452">+234 907 694 3452</a>.
+    <div style="margin-top:6px">&copy; <span id="yr"></span> Neostriata Phone. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- Product modal -->
+<div class="overlay" id="pOverlay"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="pTitle" id="pModal"></div></div>
+
+<!-- Cart drawer -->
+<div class="overlay" id="cOverlay">
+  <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="cTitle">
+    <button class="close" id="closeCart" aria-label="Close cart">&times;</button>
+    <h2 id="cTitle" style="font-size:1.4rem">Your cart</h2>
+    <div id="cartItems"></div>
+    <div id="checkoutArea"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
